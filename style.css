@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+}
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+ /* Sidebar styles */
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    border-left: 1px solid #333;
+    padding: 30px 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 25px;
+}
+
+.new-project {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    background: transparent;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.new-project:hover {
+    background: #222;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.workspace {
+    flex: 1;
+    min-height: 100vh;
+    position: relative;
+}
+
+.project {
+    padding: 12px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.project:hover {
+    background: #222;
+    transform: translateX(8px);
+}
