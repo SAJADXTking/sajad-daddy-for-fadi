@@ -9,9 +9,19 @@ let projects = [
 const startButton = document.querySelector('#start-button');
 const welcomeScreen = document.querySelector('.welcome-screen')
 
-const button = document.querySelector('.new-project');
+const projectForm = document.getElementById("project-form");
+const newProjectButton = document.querySelector('.new-project');
+const cancelButton = document.getElementById('cancel-button');
+const projectNameInput = document.getElementById('project-name');
 const projectList = document.querySelector('.project-list');
 
+//let's start button
+startButton.addEventListener('click', () => {
+    showProjectForm();
+    welcomeScreen.classList.add('hide');
+});
+
+//creating projects
     function createProject(projectName) {
         if (!projectName) {
             return;
@@ -40,14 +50,30 @@ const projectList = document.querySelector('.project-list');
 
         projectList.appendChild(projectElement);
     }
-//start button
-startButton.addEventListener('click', () => {
-    const projectName = prompt("Enter project name:");
-    createProject(projectName)
-    welcomeScreen.classList.add('hide');
+
+
+function showProjectForm() {
+    projectForm.classList.add('show');
+    projectNameInput.focus();
+}
+
+function hideProjectForm() {
+    projectForm.classList.remove('show');
+    projectNameInput.value = '';
+}
+
+newProjectButton.addEventListener('click', () => {
+    showProjectForm();
 });
-//+new project
-button.addEventListener('click', () => {
-    const projectName = prompt("Enter project name:");
+
+cancelButton.addEventListener('click', () => {
+    hideProjectForm();
+});
+
+projectForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const projectName = projectNameInput.value.trim();
     createProject(projectName);
+    hideProjectForm();
+    welcomeScreen.classList.add('hide');
 });

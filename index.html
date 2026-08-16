@@ -18,13 +18,25 @@
         </div>
     </div>
 
+    <!-- new project form -->
+    <form class="project-form" id="project-form">
+        <h2>Creating new project</h2>
+        <label for="project-name">Enter project name:</label>
+        <input type="text" id="project-name" placeholder="Project name" required>
+        <label for="project-color">choose color:</label>
+        <input type="color" id="project-color" placeholder="Project color" required>
+        <div class="form-buttons">
+            <button type="submit">Make Project ✨</button>
+            <button type="button" id="cancel-button">Cancel</button>
+        </div>
+    </form>
+
     <!-- the actual webside -->
     <div class="app">
         <aside class="sidebar">
             <h2>Projects</h2>
             <button class="new-project">+ New Project</button>
             <div class="project-list">
-
 
             </div>
         </aside>
