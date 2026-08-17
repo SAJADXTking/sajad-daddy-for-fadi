@@ -71,9 +71,9 @@ body {
     gap: 10px;
     padding: 30px;
     width: 350px;
-    border: 1px solid #ccc;
+    border: 1px solid #FFB886;
     border-radius: 10px;
-    background: #a1ead5;
+    background: #f9ddc9;
     z-index: 200;
 }
 
@@ -98,14 +98,36 @@ body {
 }
 
 #project-color{
-    width: 45px;
-    height: 35px;
-    padding: 0;
-    background: transparent;
-    border: 2px solid #F0DFB9;
-    border-radius: 8px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    border-radius: 7px;
+    background: linear-gradient(to right,
+        hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%),
+        hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%),
+        hsl(360, 100%, 50%));
     cursor: pointer;
-    overflow: hidden;
+}
+
+#project-color::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #F0DFB9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#color-preview {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #F0DFB9;
+    margin: 8px auto 0;
+    background: #ffffff;
 }
 
 .form-buttons button {

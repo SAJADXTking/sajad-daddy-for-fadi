@@ -24,9 +24,10 @@
         <label for="project-name">Enter project name:</label>
         <input type="text" id="project-name" placeholder="Project name" required>
         <label for="project-color">choose color:</label>
-        <input type="color" id="project-color" placeholder="Project color" required>
+        <input type="range" id="project-color" min="0" max="360" value="30">
+        <div id="color-preview"></div>
         <div class="form-buttons">
-            <button type="submit">Make Project ✨</button>
+            <button type="submit">Create</button>
             <button type="button" id="cancel-button">Cancel</button>
         </div>
     </form>

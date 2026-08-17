@@ -13,6 +13,8 @@ const projectForm = document.getElementById("project-form");
 const newProjectButton = document.querySelector('.new-project');
 const cancelButton = document.getElementById('cancel-button');
 const projectNameInput = document.getElementById('project-name');
+const projectColorInput = document.getElementById('project-color');
+const colorPreview = document.getElementById('color-preview');
 const projectList = document.querySelector('.project-list');
 
 //let's start button
@@ -22,7 +24,7 @@ startButton.addEventListener('click', () => {
 });
 
 //creating projects
-    function createProject(projectName) {
+    function createProject(projectName, projectColor) {
         if (!projectName) {
             return;
         }
@@ -30,7 +32,7 @@ startButton.addEventListener('click', () => {
         const newProject = {
             id: projects.length + 1,
             name: projectName,
-            color: "#FFB886"
+            color: projectColor || "#ffffff" //اذا فارغ يسويه ابيض
         };
 
         projects.push(newProject);
@@ -62,6 +64,22 @@ function hideProjectForm() {
     projectNameInput.value = '';
 }
 
+function patataColorPreview(){
+    const hue = projectColorInput.value;
+    colorPreview.style.background = `hsl(${hue}, 100%, 50%)`;
+}
+
+function hueToHex(hue) {
+    const s = 100, l = 50;
+    const k = n => (n + hue / 30) % 12;
+    const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
+    const f = n => (l / 100) - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+    const toHex = v => Math.round(v * 255).toString(16).padStart(2, '0');
+    return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+}
+
+projectColorInput.addEventListener('input', patataColorPreview);
+
 newProjectButton.addEventListener('click', () => {
     showProjectForm();
 });
@@ -73,7 +91,8 @@ cancelButton.addEventListener('click', () => {
 projectForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const projectName = projectNameInput.value.trim();
-    createProject(projectName);
+    const projectColor = hueToHex(projectColorInput.value);
+    createProject(projectName, projectColor);
     hideProjectForm();
     welcomeScreen.classList.add('hide');
 });
