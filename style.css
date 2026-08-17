@@ -225,6 +225,12 @@ body {
     line-height: 55px;
 
     transition: opacity 0.15s ease;
+
+    text-shadow:
+    0.3px 0.3px 0 #000,
+    -0.3px 0.3px 0 #000,
+    0.3px -0.3px 0 #000,
+    -0.3px -0.3px 0 #000;
 }
 
 .project:hover .project-name {
