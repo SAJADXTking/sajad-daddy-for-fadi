@@ -39,18 +39,32 @@ body {
 
 #start-button {
     padding: 14px 35px;
+    position: relative;
     background: transparent;
     color: #FFB886;
-    border: 2px solid #F0DFB9;
+    border: 2.5px solid #F0DFB9;
     border-radius: 8px;
     font-size: 18px;
     cursor: pointer;
-    transition: background 0.2s ease,
-    color 0.2s ease;
+    transition: color 0.5s ease;
+    z-index: 1;
 }
 
-#start-button:hover {
-    background: #FFFFFF;
+#start-button::before {
+    border-radius: 8px;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #ff8f3e;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
+}
+
+#start-button:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .welcome-screen.hide {
@@ -170,12 +184,28 @@ body {
 
     border: 1px solid #F0DFB9;
     border-radius: 8px;
-
     cursor: pointer;
+
+    position: relative;
+    transition: color 0.5s ease;
+    z-index: 1;
 }
 
-.new-project:hover {
-    background: #FFFFFF;
+.new-project::before {
+    border-radius: 8px;
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: #ff8f3e;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s cubic-bezier(0.65,0,0.35,1);
+}
+
+.new-project:hover::before {
+    transform: scaleY(1);
+    transform-origin: left;
 }
 
 .workspace {

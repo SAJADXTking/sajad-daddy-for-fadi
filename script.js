@@ -1,3 +1,5 @@
+//variables
+
 let projects = [
     {
         id: 1,
@@ -6,9 +8,10 @@ let projects = [
     }
 ];
 
+//const
+
 const startButton = document.querySelector('#start-button');
 const welcomeScreen = document.querySelector('.welcome-screen')
-
 const projectForm = document.getElementById("project-form");
 const newProjectButton = document.querySelector('.new-project');
 const cancelButton = document.getElementById('cancel-button');
@@ -17,11 +20,34 @@ const projectColorInput = document.getElementById('project-color');
 const colorPreview = document.getElementById('color-preview');
 const projectList = document.querySelector('.project-list');
 
+//                                               EVENT LISTENERS
+
 //let's start button
 startButton.addEventListener('click', () => {
     showProjectForm();
     welcomeScreen.classList.add('hide');
 });
+
+projectColorInput.addEventListener('input', patataColorPreview);
+
+newProjectButton.addEventListener('click', () => {
+    showProjectForm();
+});
+
+cancelButton.addEventListener('click', () => {
+    hideProjectForm();
+});
+
+projectForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const projectName = projectNameInput.value.trim();
+    const projectColor = hueToHex(projectColorInput.value);
+    createProject(projectName, projectColor);
+    hideProjectForm();
+    welcomeScreen.classList.add('hide');
+});
+
+//                                                   FUNCTIONS
 
 //creating projects
     function createProject(projectName, projectColor) {
@@ -32,7 +58,7 @@ startButton.addEventListener('click', () => {
         const newProject = {
             id: projects.length + 1,
             name: projectName,
-            color: projectColor || "#ffffff" //اذا فارغ يسويه ابيض
+            color: projectColor
         };
 
         projects.push(newProject);
@@ -77,22 +103,3 @@ function hueToHex(hue) {
     const toHex = v => Math.round(v * 255).toString(16).padStart(2, '0');
     return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
 }
-
-projectColorInput.addEventListener('input', patataColorPreview);
-
-newProjectButton.addEventListener('click', () => {
-    showProjectForm();
-});
-
-cancelButton.addEventListener('click', () => {
-    hideProjectForm();
-});
-
-projectForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const projectName = projectNameInput.value.trim();
-    const projectColor = hueToHex(projectColorInput.value);
-    createProject(projectName, projectColor);
-    hideProjectForm();
-    welcomeScreen.classList.add('hide');
-});
